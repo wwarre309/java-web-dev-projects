@@ -60,6 +60,29 @@ public class Student {
     // TODO: Add your custom 'equals' method here. Consider which fields should match in order to call two
     //  Student objects equal.
 
+
+    public String toString() {
+
+        String studentReport = String.format("%s is a %s with %d credits and a GPA of %.2f", this.name, getGradeLevel(this.numberOfCredits), this.getNumberOfCredits(), this.getGpa());
+        return studentReport;
+    }
+
+    public boolean equals(Object toBeCompared) {
+        if (toBeCompared == this) {
+            return true;
+        }
+
+        if (toBeCompared == null) {
+            return false;
+        }
+
+        if (toBeCompared.getClass() != getClass()) {
+            return false;
+        }
+
+        Student theStudent = (Student) toBeCompared;
+        return theStudent.getStudentId() == getStudentId();
+    }
     public String getName() {
         return name;
     }

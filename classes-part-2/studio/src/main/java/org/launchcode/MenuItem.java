@@ -28,5 +28,45 @@ public class MenuItem {
     public void setNew(boolean aNew) {
         isNew = aNew;
     }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public boolean isNew() {
+        return isNew;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        MenuItem menuItem = (MenuItem) obj;
+        return Double.compare(menuItem.price, price) == 0 &&
+                description.equals(menuItem.description) &&
+                category.equals(menuItem.category);
+    }
+
+//    @Override
+//    public int hashCode() {
+//        return Menu.hash(price, description, category);
+//    }
+
+    @Override
+    public String toString() {
+        return "Category: " + category + ", Description: " + description + ", Price: " + price + ", New: " + isNew;
+    }
 }
 
