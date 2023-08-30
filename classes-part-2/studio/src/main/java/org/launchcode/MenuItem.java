@@ -64,9 +64,17 @@ public class MenuItem {
 //        return Menu.hash(price, description, category);
 //    }
 
+//    @Override
+//    public String toString() {
+//        return "Category: " + category + ", Description: " + description + ", Price: " + price + ", New: " + isNew;
+//    }
+
     @Override
-    public String toString() {
-        return "Category: " + category + ", Description: " + description + ", Price: " + price + ", New: " + isNew;
+    public String toString(){
+        return String.format("%s from the %s category, price: $%.2f%s.\n", this.description,
+                this.category, this.price, (this.isNew) ? " and is new to the menu" : "");
     }
+
 }
+
 
