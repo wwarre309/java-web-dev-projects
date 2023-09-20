@@ -13,10 +13,10 @@ public class Event {
     private String location;
 
     @AssertTrue(message="Attendee must register for event")
-    private boolean isRegistered;
+    private Boolean isRegistered = true;
 
     @Positive(message="Number of attendees bust be 1 or more")
-    private int numberOfAttendees;
+    private int numberOfAttendees = 0;
     private int id;
     private static int nextId = 1;
 
@@ -31,11 +31,16 @@ public class Event {
     @Email(message = "Invalid email. Try again.")
     private String contactEmail;
 
-    public Event(String name, String description, String contactEmail) {
+    public Event(String name, String description, String contactEmail, String location, Boolean isRegistered, int numberOfAttendees) {
         this();
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
+        this.location = location;
+        this.numberOfAttendees = numberOfAttendees;
+        this.isRegistered = isRegistered;
+
+
     }
 
     public Event() {
@@ -69,6 +74,30 @@ public class Event {
 
     public int getId() {
         return id;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public boolean isRegistered() {
+        return isRegistered;
+    }
+
+    public void setRegistered(boolean registered) {
+        isRegistered = registered;
+    }
+
+    public int getNumberOfAttendees() {
+        return numberOfAttendees;
+    }
+
+    public void setNumberOfAttendees(int numberOfAttendees) {
+        this.numberOfAttendees = numberOfAttendees;
     }
 
     @Override
