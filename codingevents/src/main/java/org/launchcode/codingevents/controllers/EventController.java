@@ -3,6 +3,7 @@ package org.launchcode.codingevents.controllers;
 import jakarta.validation.Valid;
 import org.launchcode.codingevents.data.EventData;
 import org.launchcode.codingevents.models.Event;
+import org.launchcode.codingevents.models.EventType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -26,6 +27,7 @@ public class EventController {
     public String displayCreateEventForm(Model model) {
         model.addAttribute("title", "Create Event");
         model.addAttribute(new Event());
+        model.addAttribute("types", EventType.values());
         return "events/create";
     }
 
@@ -38,7 +40,7 @@ public class EventController {
         }
 
         EventData.add(newEvent);
-        return "redirect:";
+        return "redirect:/events";
     }
 
     @GetMapping("delete")
@@ -57,7 +59,7 @@ public class EventController {
             }
         }
 
-        return "redirect:";
+        return "redirect:/events";
     }
 
 }
